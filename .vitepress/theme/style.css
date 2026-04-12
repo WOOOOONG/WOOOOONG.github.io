@@ -1,0 +1,252 @@
+/* ─── D2Coding Ligature Font ─── */
+
+@font-face {
+  font-family: 'D2Coding';
+  src: url('/fonts/D2CodingLigature-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'D2Coding';
+  src: url('/fonts/D2CodingLigature-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Monokai Pro Color Palette ─── */
+
+:root {
+  --mono-font: 'D2Coding', 'D2Coding ligature', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+
+/* Dark: Monokai Pro */
+html.dark {
+  --term-bg:        #2d2a2e;
+  --term-bg-alt:    #221f22;
+  --term-bg-hl:     #403e41;
+  --term-fg:        #fcfcfa;
+  --term-fg-dim:    #c1c0c0;
+  --term-comment:   #727072;
+  --term-red:       #ff6188;
+  --term-orange:    #fc9867;
+  --term-yellow:    #ffd866;
+  --term-green:     #a9dc76;
+  --term-blue:      #78dce8;
+  --term-magenta:   #ab9df2;
+  --term-cyan:      #78dce8;
+  --term-selection: #5b595c;
+}
+
+/* Light: Monokai Pro Light */
+html:not(.dark) {
+  --term-bg:        #faf4f2;
+  --term-bg-alt:    #ede7e5;
+  --term-bg-hl:     #d3cdcc;
+  --term-fg:        #29242a;
+  --term-fg-dim:    #706b6e;
+  --term-comment:   #a59fa0;
+  --term-red:       #e14775;
+  --term-orange:    #e16032;
+  --term-yellow:    #cc7a0a;
+  --term-green:     #269d69;
+  --term-blue:      #1c8ca8;
+  --term-magenta:   #7058be;
+  --term-cyan:      #1c8ca8;
+  --term-selection: #d3cdcc;
+}
+
+/* ─── VitePress Theme Overrides ─── */
+/* --term-* 변수를 참조하므로 다크/라이트 모두 자동으로 적용됨 */
+
+html.dark,
+html:not(.dark) {
+  --vp-c-bg:             var(--term-bg);
+  --vp-c-bg-alt:         var(--term-bg-alt);
+  --vp-c-bg-elv:         var(--term-bg-hl);
+  --vp-c-bg-soft:        var(--term-bg-hl);
+
+  --vp-c-text-1:         var(--term-fg);
+  --vp-c-text-2:         var(--term-fg-dim);
+  --vp-c-text-3:         var(--term-comment);
+
+  --vp-c-brand-1:        var(--term-green);
+  --vp-c-brand-2:        var(--term-green);
+  --vp-c-brand-3:        var(--term-green);
+  --vp-c-brand-soft:     color-mix(in srgb, var(--term-green) 14%, transparent);
+
+  --vp-c-tip-1:          var(--term-cyan);
+  --vp-c-tip-soft:       color-mix(in srgb, var(--term-cyan) 14%, transparent);
+  --vp-c-warning-1:      var(--term-yellow);
+  --vp-c-warning-soft:   color-mix(in srgb, var(--term-yellow) 14%, transparent);
+  --vp-c-danger-1:       var(--term-red);
+  --vp-c-danger-soft:    color-mix(in srgb, var(--term-red) 14%, transparent);
+
+  --vp-c-divider:        var(--term-bg-hl);
+  --vp-c-gutter:         var(--term-bg-hl);
+
+  --vp-code-bg:          var(--term-bg-alt);
+  --vp-code-color:       var(--term-fg);
+
+  --vp-c-default-1:      var(--term-fg-dim);
+  --vp-c-default-2:      var(--term-bg-hl);
+  --vp-c-default-3:      var(--term-bg-hl);
+  --vp-c-default-soft:   var(--term-bg-hl);
+}
+
+/* ─── color-scheme per mode ─── */
+
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+/* ─── Global Typography ─── */
+
+:root {
+  --vp-font-family-base: var(--mono-font);
+  --vp-font-family-mono: var(--mono-font);
+}
+
+body {
+  font-family: var(--mono-font);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--mono-font);
+}
+
+/* ─── Navigation Terminal Style ─── */
+
+.VPNav .VPNavBarTitle .title {
+  font-family: var(--mono-font);
+  color: var(--term-green);
+}
+
+.VPNav .VPNavBarMenuLink {
+  font-family: var(--mono-font);
+  color: var(--term-fg-dim);
+}
+
+.VPNav .VPNavBarMenuLink:hover,
+.VPNav .VPNavBarMenuLink.active {
+  color: var(--term-cyan);
+}
+
+/* ─── Links ─── */
+
+.vp-doc a {
+  color: var(--term-cyan);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.vp-doc a:hover {
+  color: var(--term-cyan);
+  text-decoration: underline;
+}
+
+/* ─── Code Blocks ─── */
+
+.vp-doc div[class*='language-'] {
+  background-color: var(--term-bg-alt);
+  border: 1px solid var(--term-bg-hl);
+  border-radius: 4px;
+}
+
+.vp-doc div[class*='language-'] span.lang {
+  color: var(--term-comment);
+  font-family: var(--mono-font);
+}
+
+/* ─── Custom Divider (box-drawing line) ─── */
+
+.vp-doc hr {
+  border: none;
+  border-top: 1px solid var(--term-bg-hl);
+  margin: 2rem 0;
+}
+
+.vp-doc hr::before {
+  content: '────────────────────────────────────────';
+  display: block;
+  color: var(--term-comment);
+  font-family: var(--mono-font);
+  font-size: 0.85em;
+  margin-bottom: -1px;
+}
+
+/* ─── Sidebar ─── */
+
+.VPSidebar {
+  background-color: var(--term-bg-alt) !important;
+}
+
+/* ─── Blinking Cursor ─── */
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  display: inline-block;
+  animation: blink 1s step-end infinite;
+  color: var(--term-green);
+}
+
+/* ─── Content area ─── */
+
+.VPContent .VPDoc {
+  background-color: var(--term-bg);
+}
+
+/* ─── VPPage: navbar 와 동일한 max-width/centering ─── */
+/* layout: page 는 .VPDoc 가 아닌 .VPPage 로 렌더링됨 */
+
+.VPPage {
+  max-width: calc(var(--vp-layout-max-width, 1280px) - 64px);
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+@media (min-width: 768px) {
+  .VPPage {
+    padding: 48px 32px 96px;
+  }
+}
+
+/* ─── NavBar Extra (... 메뉴) 숨김 ─── */
+
+.VPNavBarExtra {
+  display: none !important;
+}
+
+/* GitHub 소셜 링크 숨김 — 토글이 가장 우측으로 */
+.VPNavBarSocialLinks {
+  display: none !important;
+}
+
+/* ─── Home page override (hide default VitePress hero) ─── */
+
+.VPHome {
+  background-color: var(--term-bg);
+}
+
+.VPHomeHero,
+.VPHomeFeatures {
+  display: none !important;
+}
+
+/* ─── Footer hide ─── */
+
+.VPFooter {
+  display: none !important;
+}
