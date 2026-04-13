@@ -1,4 +1,4 @@
-# jungwoong@aips — Security Research Notebook
+# jeongwoong@blog
 
 Personal site built with [VitePress](https://vitepress.dev). Terminal-themed portfolio for CVE reproduction notes, security research writeups, and homelab documentation.
 
