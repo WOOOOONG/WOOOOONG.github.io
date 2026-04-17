@@ -68,7 +68,10 @@ const info = computed(() => [
 <template>
   <div class="neofetch">
     <div class="neofetch-ascii">
-      <img src="/profile_image.jpg" alt="profile" class="neofetch-img" />
+      <picture>
+        <source srcset="/profile_image.webp" type="image/webp" />
+        <img src="/profile_image_small.jpg" alt="profile" class="neofetch-img" />
+      </picture>
     </div>
     <div class="neofetch-info">
       <div class="neofetch-header">
