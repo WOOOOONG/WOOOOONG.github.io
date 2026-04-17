@@ -2,10 +2,13 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 const startDate = new Date('1999-05-19T10:30:00')
-const now = ref(new Date())
+const now = ref(new Date(0)) // epoch placeholder — consistent between SSR and initial client render
+const isMounted = ref(false)
 
 let timer: number
 onMounted(() => {
+  isMounted.value = true
+  now.value = new Date()
   timer = window.setInterval(() => {
     now.value = new Date()
   }, 1000)
@@ -57,7 +60,7 @@ const info = computed(() => [
   { key: 'Role',     value: 'Network Vulnerability Researcher' },
   { key: 'Team',     value: 'AIPS Development' },
   { key: 'Focus',    value: 'Security x AI' },
-  { key: 'Uptime',   value: uptime.value },
+  { key: 'Uptime',   value: isMounted.value ? uptime.value : '...' },
   { key: 'Stack',    value: 'Suricata, Snort, FW, NGFW, IPS/IDS, WAF, SIEM' },
   { key: 'AI',       value: 'Sklearn, Pytorch, Ollama, unsloth, n8n, openclaw' },
   { key: 'Locale',   value: 'ko_KR.UTF-8' }
