@@ -3,6 +3,7 @@ import monokaiPro from './monokai-pro.json'
 import monokaiProLight from './monokai-pro-light.json'
 
 export default defineConfig({
+  lang: 'ko-KR',
   title: 'jeongwoong.yoon@blog',
   description: '윤정웅 포트폴리오 — 취약점 분석 · 탐지 규칙 개발 · 보안 자동화',
   cleanUrls: true,
@@ -25,7 +26,6 @@ export default defineConfig({
           "img-src 'self' data:",
           "font-src 'self'",
           "connect-src 'self'",
-          "frame-ancestors 'none'",
           "base-uri 'self'",
           "form-action 'none'"
         ].join('; ')

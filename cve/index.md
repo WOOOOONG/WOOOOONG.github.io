@@ -18,47 +18,47 @@ function cvssClass(score) {
 }
 </script>
 
-<div class="post-list">
-  <div v-for="post of posts" :key="post.url" class="post-item">
-    <span class="post-date">{{ post.date }}</span>
-    <span class="post-sep"> │ </span>
-    <span v-if="post.cvss" class="post-cvss" :class="cvssClass(post.cvss)">CVSS {{ post.cvss }}</span>
-    <span v-if="post.cvss" class="post-sep"> │ </span>
-    <a :href="post.url" class="post-title">{{ post.title }}</a>
-    <span class="post-status"> [{{ post.status }}]</span>
+<div class="cve-post-list">
+  <div v-for="post of posts" :key="post.url" class="cve-post-item">
+    <span class="cve-post-date">{{ post.date }}</span>
+    <span class="cve-post-sep"> │ </span>
+    <span v-if="post.cvss" class="cve-post-cvss" :class="cvssClass(post.cvss)">CVSS {{ post.cvss }}</span>
+    <span v-if="post.cvss" class="cve-post-sep"> │ </span>
+    <a :href="post.url" class="cve-post-title">{{ post.title }}</a>
+    <span class="cve-post-status"> [{{ post.status }}]</span>
   </div>
-  <div v-if="posts.length === 0" class="post-empty">
+  <div v-if="posts.length === 0" class="cve-post-empty">
     <span class="term-comment">// no entries yet</span>
   </div>
 </div>
 
 
 <style>
-.post-list {
+.cve-post-list {
   font-family: var(--mono-font);
   font-size: 0.9rem;
   margin-top: 1rem;
 }
-.post-item {
+.cve-post-item {
   padding: 0.3rem 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.post-date {
+.cve-post-date {
   color: var(--term-comment);
 }
-.post-sep {
+.cve-post-sep {
   color: var(--term-bg-hl);
 }
-.post-title {
+.cve-post-title {
   color: var(--term-cyan) !important;
 }
-.post-status {
+.cve-post-status {
   color: var(--term-yellow);
   font-size: 0.8em;
 }
-.post-cvss {
+.cve-post-cvss {
   font-size: 0.8em;
   font-weight: 700;
 }
@@ -66,7 +66,7 @@ function cvssClass(score) {
 .cvss-high { color: var(--term-orange); }
 .cvss-medium { color: var(--term-yellow); }
 .cvss-low { color: var(--term-green); }
-.post-empty {
+.cve-post-empty {
   color: var(--term-comment);
   padding: 1rem 0;
 }
