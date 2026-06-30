@@ -5,17 +5,16 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# 외부 토큰(PAT)을 사용하여 다른 레포지토리에 푸시하므로 최소한의 읽기 권한만 설정합니다.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -38,21 +37,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      # 빌드된 VitePress 정적 파일(.vitepress/dist)을 공개 레포지토리로 푸시합니다.
+      - name: Deploy to Public Repo
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: .vitepress/dist
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ github.event.repository.html_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          folder: .vitepress/dist # VitePress 빌드 결과물 경로
+          repository-name: WOOOOONG/WOOOOONG.github.io # 목적지 공개 레포지토리 주소
+          branch: main # 배포될 레포지토리의 브랜치
+          token: ${{ secrets.PORTFOLIO_DEPLOY_TOKEN }} # 3단계에서 등록한 Secret 변수명
